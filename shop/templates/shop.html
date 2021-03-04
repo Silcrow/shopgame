@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
-Hello. This is the shop page.
 {% block content %}
-    {% items %}
+    {% for item in items %}
+        <h3><a href="">{{ item.name }}</a></h3>
+        <p>{{ item.description|linebreaksbr }}</p>
+        <p>${{ item.price }}</p>
+    {% endfor %}
 {% endblock %}
