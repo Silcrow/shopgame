@@ -5,5 +5,4 @@ from shop.models import Merchandise
 
 def shop(request):
     items = Merchandise.objects.all()
-    return render(request, 'shop.html', {'items': items})
-
+    return render(request, 'shop/shop.html', {'items': items})
