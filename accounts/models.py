@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    about = models.CharField(max_length=120, null=True, blank=True)
+    about = models.CharField(max_length=500, null=True, blank=True)
     cash = models.PositiveIntegerField(default=1000)
     health = models.PositiveIntegerField(default=10)
     mana = models.PositiveIntegerField(default=30)
