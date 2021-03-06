@@ -3,4 +3,7 @@
 {% block content %}
 <h3>This is the home page.</h3>
 <p>TODO: show the game map here.</p>
+{% if user.is_authenticated %}
+    <p>Is {{ user.username }} here? Just checking.</p>
+{% endif %}
 {% endblock %}
