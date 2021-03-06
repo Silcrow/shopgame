@@ -4,5 +4,6 @@ import shop
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('shop.urls')),
+    path('', include('accounts.urls')),
+    path('shop/', include('shop.urls')),
 ]
