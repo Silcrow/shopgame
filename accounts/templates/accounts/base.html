@@ -10,11 +10,11 @@
     <body>
         <header>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/shop/">Shop</a></li>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'shop' %}">Shop</a></li>
                 <li><a href="/">Profile</a></li>
-                <li style="float:right"><a class="active" href="/">Signup</a></li>
-                <li style="float:right"><a class="active" href="/">Login</a></li>
+                <li style="float:right"><a href="/">Signup</a></li>
+                <li style="float:right"><a href="/">Login</a></li>
             </ul>
         </header>
         <main class="content container">
