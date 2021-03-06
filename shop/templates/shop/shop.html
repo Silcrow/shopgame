@@ -1,7 +1,7 @@
 {% extends 'accounts/base.html' %}
 
 {% block content %}
-<h3>This is the shop page.</h3>
+<h2>Shop</h2>
     {% for item in items %}
         <h3><a href="">{{ item.name }}</a></h3>
         <p>{{ item.description|linebreaksbr }}</p>

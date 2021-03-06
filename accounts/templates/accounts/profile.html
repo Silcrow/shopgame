@@ -1,11 +1,24 @@
 {% extends 'accounts/base.html' %}
+{% load static %}
 
 {% block content %}
-<h3>This is the profile page.</h3>
+<h2>Character Sheet</h2>
 {% if user.is_authenticated %}
-    <h4>Welcome, {{ user.username }}.</h4>
-    <p>Cash: {{ user.profile.cash }}</p>
-    <p>Health: {{ user.profile.health }}</p>
-    <p>Mana: {{ user.profile.mana }}</p>
+<div class="row">
+    <div class="column left">
+        <h3>{{ user.username }}'s stats</h3>
+        <p>Cash: ${{ user.profile.cash }}</p>
+        <p>Health: {{ user.profile.health }}</p>
+        <p>Mana: {{ user.profile.mana }}</p>
+    </div>
+    <div class="column right">
+        <h3>About</h3>
+        <p>Some text about you..</p>
+    </div>
+</div>
+<div class="row">
+    <h3>Items</h3>
+    <p>List of your items here..</p>
+</div>
 {% endif %}
 {% endblock %}
