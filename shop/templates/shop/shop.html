@@ -2,9 +2,40 @@
 
 {% block content %}
 <h2>Shop</h2>
-    {% for item in items %}
-        <h3><a href="">{{ item.name }}</a></h3>
-        <p>{{ item.description|linebreaksbr }}</p>
-        <p>${{ item.price }}</p>
-    {% endfor %}
+
+{% for item in items %}
+<div class="card">
+    <h3>{{ item.name }}</h3>
+    <p>${{ item.price }}</p>
+    <p>{{ item.description|linebreaksbr }}</p>
+    <button>Add to Cart</button>
+</div>
+{% endfor %}
+
+
+<button class="open-button" onclick="openForm()">
+    <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
+</button>
+
+<div class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="List of items here..." name="msg" required></textarea>
+
+    <button type="submit" class="btn">Buy</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
 {% endblock %}
