@@ -3,21 +3,26 @@
 {% block content %}
 <h2>Shop</h2>
 
-{% for item in items %}
-<div class="card">
-    <h3>{{ item.name }}</h3>
-    <p>${{ item.price }}</p>
-    <p>{{ item.description|linebreaksbr }}</p>
-    <button>Add to Cart</button>
+
+<input type="text" id="searchData" onkeyup="searchProduct()" placeholder="Search by name.." title="Type in a name">
+
+<div id="merchandise">
+  {% for item in items %}
+    <div class="card">
+        <h3>{{ item.name }}</h3>
+        <p>${{ item.price }}</p>
+        <p>{{ item.description|linebreaksbr }}</p>
+        <button>Add to Cart</button>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
 
 
 <button class="open-button" onclick="openForm()">
     <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
 </button>
 
-<div class="chat-popup" id="myForm">
+<div class="chat-popup" id="cartForm">
   <form action="/action_page.php" class="form-container">
 
     <label for="msg"><b>Message</b></label>
@@ -30,12 +35,30 @@
 
 <script>
 function openForm() {
-  document.getElementById("myForm").style.display = "block";
+  document.getElementById("cartForm").style.display = "block";
 }
 
 function closeForm() {
-  document.getElementById("myForm").style.display = "none";
+  document.getElementById("cartForm").style.display = "none";
 }
+
+function searchProduct() {
+    let input, filter, goods, product, name, i, txtValue;
+    input = document.getElementById("searchData");
+    filter = input.value.toUpperCase();
+    goods = document.getElementById("merchandise");
+    product = goods.getElementsByTagName("div");
+    for (i = 0; i < product.length; i++) {
+        name = product[i].getElementsByTagName("h3")[0];
+        txtValue = name.textContent || name.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            product[i].style.display = "";
+        } else {
+            product[i].style.display = "none";
+        }
+    }
+}
+
 </script>
 
 {% endblock %}
