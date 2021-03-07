@@ -5,11 +5,16 @@
 <h2>Character Sheet</h2>
 {% if user.is_authenticated %}
 <div class="row">
+<!--    TODO: you'll have to edit health_full & mana_full-->
     <div class="column left">
-        <h3>{{ user.username }}'s stats</h3>
-        <p>Cash: ${{ user.profile.cash }}</p>
-        <p>Health: {{ user.profile.health }}</p>
-        <p>Mana: {{ user.profile.mana }}</p>
+        <h3>{{ user.username }}</h3>
+        <h2>${{ user.profile.cash }}</h2>
+        <progress id="health" color="red" value="{{ user.profile.health }}" max="10"></progress>
+        {{ user.profile.health }} / {{ user.profile.health_full }}
+        <label for="health">Health</label><br>
+        <progress id="mana" value="{{ user.profile.mana }}" max="30"></progress>
+        {{ user.profile.mana }} / {{ user.profile.mana_full }}
+        <label for="mana">Mana</label>
     </div>
     <div class="column right">
         <h3>About</h3>
